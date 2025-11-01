@@ -14,6 +14,7 @@ public class MyDataRESTConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+
         RepositoryRestConfigurer.super.configureRepositoryRestConfiguration(config, cors);
 
         HttpMethod[] unsupportedRestActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};

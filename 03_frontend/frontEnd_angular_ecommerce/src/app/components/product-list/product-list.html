@@ -1,0 +1,5 @@
+<p>Florin Product List</p>
+
+@for (tempProduct of products; track tempProduct.sku) {
+<p> {{ tempProduct.name}}: {{ tempProduct.unitPrice }}</p>
+}
