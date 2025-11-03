@@ -1,5 +1,36 @@
 <p>Florin Product List</p>
 
 @for (tempProduct of products; track tempProduct.sku) {
-<p> {{ tempProduct.name}}: {{ tempProduct.unitPrice }}</p>
+<p> {{ tempProduct.name}}: {{ tempProduct.unitPrice | currency:'EUR':'symbol':'1.2-2' }}</p>
+<!-- <p> {{ tempProduct.name}}: {{ tempProduct.unitPrice | currency:'USD':'symbol':'1.2-0' }}</p> -->
 }
+
+
+<hr>
+<h1> Create a table of products </h1>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark custom-lightPurple">
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Units in Stock</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (tempProduct of products; track tempProduct.sku) {
+        <tr>
+            <td>
+                <img src="{{tempProduct.imageUrl}}" height="50" />
+            </td>
+            <td> {{ tempProduct.name}} - {{tempProduct.imageUrl}}</td>
+            <td>{{ tempProduct.unitPrice | currency:'EUR':'symbol':'1.2-2' }}</td>
+            <td>{{tempProduct.unitsInStock}}</td>
+            <!-- <p> {{ tempProduct.name}}: {{ tempProduct.unitPrice | currency:'USD':'symbol':'1.2-0' }}</p> -->
+        </tr>
+        }
+
+    </tbody>
+
+</table>

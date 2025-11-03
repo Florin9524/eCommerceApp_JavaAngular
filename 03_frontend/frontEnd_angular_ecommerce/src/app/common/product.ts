@@ -3,7 +3,7 @@ export class Product {
     name: string = '';
     description: string = '';
     unitPrice: number = 0;
-    imageURL: string = '';
+    imageUrl: string = '';
     active: boolean = false;
     unitsInStock: number = 0;
     dateCreated: Date = new Date();

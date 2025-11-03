@@ -29,5 +29,4 @@ export class ProductList implements OnInit {
         this.products = data;
       });
   }
-
 }
