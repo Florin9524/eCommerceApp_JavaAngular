@@ -1,0 +1,54 @@
+.product-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fff;
+    height: 100%;
+}
+
+.product-image-container {
+    width: 100%;
+    height: 250px;
+    /* sau ce înălțime vrei */
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* spațiu între nume, preț și buton */
+    width: 100%;
+}
+
+.product-name {
+    font-size: 1.2rem;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* numărul maxim de linii */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price {
+    font-weight: bold;
+    color: #333;
+}
+
+.product-info .btn {
+    align-self: stretch;
+    /* butonul ocupă toată lățimea containerului */
+}

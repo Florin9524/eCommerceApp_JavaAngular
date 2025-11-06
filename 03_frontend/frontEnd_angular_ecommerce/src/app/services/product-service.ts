@@ -10,7 +10,7 @@ import { Product } from '../common/product';
   providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl = 'http://192.168.1.13:8080/api/products';  // Înlocuiește cu IP-ul tău real
+  private baseUrl = 'http://192.168.1.13:8080/api/products?size=100';  // Înlocuiește cu IP-ul tău real
 
   constructor(private httpClient: HttpClient) { }
 

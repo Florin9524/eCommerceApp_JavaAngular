@@ -1,0 +1,12 @@
+<div class="product-box d-flex">
+    <div class="product-image-container">
+        <img [src]="product.imageUrl" [alt]="product.name" class="product-image">
+    </div>
+    <div class="product-info">
+        <h1 class="product-name">{{product.name}}</h1>
+        <div class="bottom-section mt-auto">
+            <div class="price">{{ product.unitPrice | currency:'EUR':'symbol':'1.2-2' }}</div>
+            <a href="#" class="btn btn-info">Add to Florin cart</a>
+        </div>
+    </div>
+</div>

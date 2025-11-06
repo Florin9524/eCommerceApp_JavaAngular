@@ -1,0 +1,17 @@
+<p>Florin Products 3 Gird</p>
+
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+
+                @for (tempProduct of products; track tempProduct.sku) {
+                <div class="col-md-3 col-sm-6 mb-4 col-xl-2">
+                    <app-product-card [product]="tempProduct"></app-product-card>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
