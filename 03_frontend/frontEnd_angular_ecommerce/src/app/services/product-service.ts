@@ -10,15 +10,25 @@ import { Product } from '../common/product';
   providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl = 'http://192.168.1.13:8080/api/products?size=100';  // Înlocuiește cu IP-ul tău real
+  // private baseUrl = 'http://florinApp.home.ro:4209/api/products?size=100';  // Înlocuiește cu IP-ul tău real
+  private readonly serverIp = '192.168.1.97';
+  private readonly serverPort = '8080';
+
+  private readonly productsAPI = `http://${this.serverIp}:${this.serverPort}/api/products`;
+  private readonly searchByProductCategory = `${this.productsAPI}/search/findByCategoryId?id=`;
 
   constructor(private httpClient: HttpClient) { }
 
-  getProductList(): Observable<Product[]> {
-    console.log('Calling API:', this.baseUrl);
+  getProductList(theCategoryId: number): Observable<Product[]> {
+
+    const searchUrl = theCategoryId === 0
+      ? this.productsAPI
+      : `${this.searchByProductCategory}${theCategoryId}`;
+
+    console.log('Calling API:', searchUrl, "category id is ", theCategoryId);
 
 
-    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+    return this.httpClient.get<GetResponse>(searchUrl).pipe(
       map(response => response._embedded.products)
     );
   }
