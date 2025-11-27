@@ -12,5 +12,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @CrossOrigin(origins = {"http://localhost:4200", "http://192.168.1.97:4200"})
 //@CrossOrigin(origins = "*")
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    Page<Product> findBy (@RequestParam("id") Long id, Pageable pageable);
+    Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pageable);
 }
