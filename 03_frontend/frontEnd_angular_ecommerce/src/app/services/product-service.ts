@@ -12,8 +12,11 @@ import { ProductCategory } from '../common/product-category';
 })
 export class ProductService {
   // private baseUrl = 'http://florinApp.home.ro:4209/api/products?size=100';  // Înlocuiește cu IP-ul tău real
-  private readonly serverIp = '192.168.1.97';
-  private readonly serverPort = '8080';
+  // private readonly serverIp = '192.168.1.97';
+  // private readonly serverPort = '8080';
+
+  private readonly serverIp = 'florinApp.home.ro';
+  private readonly serverPort = '4209';
 
   private readonly productsAPI = `http://${this.serverIp}:${this.serverPort}/api/products`;
   private readonly productCategoryAPI = `http://${this.serverIp}:${this.serverPort}/api/product-category`;
