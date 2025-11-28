@@ -4,7 +4,6 @@ import { Product } from '../../common/product';
 import { CommonModule } from '@angular/common';
 import { ProductCard } from '../product-card/product-card';
 import { ActivatedRoute } from '@angular/router';
-import is from '@angular/common/locales/is';
 
 
 @Component({
@@ -31,10 +30,40 @@ export class ProductList implements OnInit {
     // this.listProducts();
   }
 
+
   listProducts() {
+    console.log('Identify route - paramMap:', this.route.snapshot.paramMap);
+    console.log('All params:', this.route.snapshot.paramMap.keys);
+    const searchMode = this.route.snapshot.paramMap.has('keyword');
+    console.log('Search mode (has keyword):', searchMode);
+    if (searchMode) {
+      this.handleSearchProducts();
+    }
+    else {
+      this.handleListProducts();
+    }
+  }
 
-    console.log('Starting to fetch products...');
+  handleSearchProducts() {
+    console.log('[handleSearchProducts]: Starting to fetch products...');
+    const keyword = this.route.snapshot.paramMap.get('keyword');
+    console.log('[handleSearchProducts]: Keyword is:', keyword);
 
+    if (keyword) {
+      this.productService.getComplexSearchResult(keyword).subscribe(
+        data => {
+          console.log('[handleSearchProducts]: Got data:', data);
+          this.products = data;
+        },
+        error => {
+          console.error('[handleSearchProducts]: Error:', error);
+        }
+      );
+    }
+  }
+
+  handleListProducts() {
+    console.log('[handleListProducts]: Starting to fetch products...');
     // check if "id" parameter is available
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
@@ -50,8 +79,6 @@ export class ProductList implements OnInit {
       data => {
         this.products = data;
       });
-
-
 
     // this.productService.getProductList().subscribe(
     //   data => {

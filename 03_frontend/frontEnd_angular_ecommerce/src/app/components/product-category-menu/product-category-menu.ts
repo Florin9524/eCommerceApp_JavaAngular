@@ -6,7 +6,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-product-category-menu',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, ProductCategoryMenu],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './product-category-menu.html',
   styleUrl: './product-category-menu.css',
   providers: [ProductService]
@@ -29,7 +29,7 @@ export class ProductCategoryMenu {
       data => {
         this.productCategories = data;
         console.log("Products categories received");
-        console.log("Products Categories: ", JSON.stringify(this.productCategories));
+        console.log("Products Categories: ", data);
       });
   }
 }

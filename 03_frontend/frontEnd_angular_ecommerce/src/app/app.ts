@@ -1,14 +1,14 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { ProductService } from './services/product-service';
-import { ProductList } from './components/product-list/product-list';
 import { ProductCategoryMenu } from './components/product-category-menu/product-category-menu';
 import { GeneralMenu } from './components/general-menu/general-menu';
+import { ComplexSearchProduct } from './components/complex-search-product/complex-search-product';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, ProductList, ProductCategoryMenu, GeneralMenu],
+  imports: [RouterOutlet, ProductCategoryMenu, ComplexSearchProduct, GeneralMenu],
   templateUrl: './app.html',
   styleUrl: './app.css',
   providers: [ProductService]

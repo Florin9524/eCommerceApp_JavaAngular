@@ -17,14 +17,17 @@ export class ProductService {
 
   private readonly productsAPI = `http://${this.serverIp}:${this.serverPort}/api/products`;
   private readonly productCategoryAPI = `http://${this.serverIp}:${this.serverPort}/api/product-category`;
-  private readonly searchByProductCategory = `${this.productsAPI}/search/findByCategoryId?id=`;
 
+  private readonly searchByProductCategory = `${this.productsAPI}/search/findByCategoryId?id=`;
+  private readonly searchComplexSearch = `${this.productsAPI}/search/findByNameContainingOrCategoryCategoryNameContainingOrDescriptionContaining?`;
+
+  private readonly defaultSize = 120;
   constructor(private httpClient: HttpClient) { }
 
   getProductList(theCategoryId: number): Observable<Product[]> {
 
     const searchUrl = theCategoryId === 0
-      ? this.productsAPI
+      ? this.productsAPI + "?size=120"
       : `${this.searchByProductCategory}${theCategoryId}`;
 
     console.log('Calling API:', searchUrl, "category id is ", theCategoryId);
@@ -48,7 +51,19 @@ export class ProductService {
     );
   }
 
+  getComplexSearchResult(text: string): Observable<Product[]> {
+    const searchUrl = this.searchComplexSearch +
+      `name=${text}` +
+      `&category_name=${text}` +
+      `&description=${text}` +
+      `&size=${this.defaultSize}`
 
+    console.log('Calling API:', searchUrl);
+
+    return this.httpClient.get<GetProductsList>(searchUrl).pipe(
+      map(response => response._embedded.products)
+    );
+  }
 
 }
 
